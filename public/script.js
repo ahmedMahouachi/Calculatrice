@@ -8,6 +8,9 @@ async function calculate(operation) {
   errorEl.textContent = '';
   resultEl.textContent = '...';
 
+ 
+
+  
   try {
     const response = await fetch(`/api/calc/${operation}`, {
       method: 'POST',
@@ -15,13 +18,16 @@ async function calculate(operation) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        a: Number(a),
-        b: Number(b)
+        a: a,
+        b: b
       })
     });
 
+
     const data = await response.json();
 
+    console.log(data);
+    
     if (!response.ok) {
       throw new Error(data.error || 'Erreur');
     }
