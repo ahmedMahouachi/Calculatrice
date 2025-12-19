@@ -3,12 +3,12 @@ function validateAndParseNumbers(req, res) {
 
   // 1️⃣ champs absents
   if (a === undefined || b === undefined) {
-    return res.status(400).json({ error: 'Both numbers a and b are required' });
+    return res.status(400).send({ error: 'Both numbers a and b are required' });
   }
 
   // 2️⃣ champs vides (string)
   if (a === '' || b === '') {
-    return res.status(400).json({ error: 'Both a and b must not be empty' });
+    return res.status(400).send({ error: 'Both a and b must not be empty' });
   }
 
   // 3️⃣ conversion explicite
@@ -17,7 +17,7 @@ function validateAndParseNumbers(req, res) {
 
   // 4️⃣ validation numérique
   if (Number.isNaN(a) || Number.isNaN(b)) {
-    return res.status(400).json({ error: 'Both a and b must be valid numbers' });
+    return res.status(400).send({ error: 'Both a and b must be valid numbers' });
   }
 
   return { a, b };
@@ -28,7 +28,7 @@ exports.add = (req, res) => {
   if (!parsed) return;
 
   const { a, b } = parsed;
-  res.json({ result: a + b });
+  res.send({ result: a + b });
 };
 
 exports.sub = (req, res) => {
@@ -36,7 +36,7 @@ exports.sub = (req, res) => {
   if (!parsed) return;
 
   const { a, b } = parsed;
-  res.json({ result: a - b });
+  res.send({ result: a - b });
 };
 
 
@@ -45,7 +45,7 @@ exports.mul = (req, res) => {
   if (!parsed) return;
 
   const { a, b } = parsed;
-  res.json({ result: a * b });
+  res.send({ result: a * b });
 };
 
 exports.div = (req, res) => {
@@ -58,7 +58,7 @@ exports.div = (req, res) => {
     return res.status(400).json({ error: 'Division by zero' });
   }
 
-  res.json({ result: a / b });
+  res.send({ result: a / b });
 };
 
 
@@ -67,6 +67,6 @@ exports.puissance = (req, res) => {
   if (!parsed) return;
 
   const { a, b } = parsed;
-  res.json({ result: a ** b });
+  res.send({ result: a ** b });
 };
 
