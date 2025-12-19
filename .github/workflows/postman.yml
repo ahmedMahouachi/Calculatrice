@@ -1,0 +1,46 @@
+name: Postma workflow
+
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  postman_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      - name: Install packages
+        run: npm install
+
+
+      - name: Install Newman et htmlextra
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Lancer le serveur
+        run: |
+          node server.js &
+          SERVER_PID=$!
+          npx wait-on http://localhost:3001
+      
+
+      - name: Run Postman tests
+        run: |
+           newman run ".\postman\Calculatrice.postman_collection.json" -e "./postman/calculatrice.postman_environment.json" -r htmlextra --reporter-htmlextra-export newman-report/report.html 
+
+      - name: Kill server
+        run: kill $SERVER_PID
+
+      - name: Upload Postman Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: newman-postman-report 
+          path: newman-report/report.html
