@@ -7,7 +7,7 @@ on:
     baranches: [main]
 
 jobs:
-  declencher_les_tests_d'integration:
+  declencher_les_tests_integration:
     runs-on: ubuntu-latest
 
     steps:
