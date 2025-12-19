@@ -39,7 +39,7 @@ jobs:
         run: kill $SERVER_PID
 
       - name: Upload Postman Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: newman-postman-report 
           path: newman-report/report.html
