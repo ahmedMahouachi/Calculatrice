@@ -1,23 +1,22 @@
 function validateAndParseNumbers(req, res) {
   let { a, b } = req.body;
 
-  // 1️⃣ champs absents
   if (a === undefined || b === undefined) {
-    return res.status(400).send({ error: 'Both numbers a and b are required' });
+    res.status(400).json({ error: 'Both numbers a and b are required' });
+    return null;
   }
 
-  // 2️⃣ champs vides (string)
   if (a === '' || b === '') {
-    return res.status(400).send({ error: 'Both a and b must not be empty' });
+    res.status(400).json({ error: 'Both a and b must not be empty' });
+    return null;
   }
 
-  // 3️⃣ conversion explicite
   a = Number(a);
   b = Number(b);
 
-  // 4️⃣ validation numérique
   if (Number.isNaN(a) || Number.isNaN(b)) {
-    return res.status(400).send({ error: 'Both a and b must be valid numbers' });
+    res.status(400).json({ error: 'Both a and b must be valid numbers' });
+    return null;
   }
 
   return { a, b };
