@@ -1,0 +1,28 @@
+name: Node.js supertest integration
+
+on:
+  push:
+    baranches: [main]
+  pull_request:
+    baranches: [main]
+
+jobs:
+  declencher_les_tests_d'integration:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/Checkout@v3
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
