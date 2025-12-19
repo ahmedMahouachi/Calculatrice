@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Postman tests
         run: |
-           newman run ".\postman\Calculatrice.postman_collection.json" -e "./postman/calculatrice.postman_environment.json" -r htmlextra --reporter-htmlextra-export newman-report/report.html 
+           newman run .\postman\Calculatrice.postman_collection.json -e ./postman/calculatrice.postman_environment.json -r htmlextra --reporter-htmlextra-export newman-report/report.html 
 
       - name: Kill server
         run: kill $SERVER_PID
