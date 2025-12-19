@@ -2,12 +2,12 @@ function validateAndParseNumbers(req, res) {
   let { a, b } = req.body;
 
   if (a === undefined || b === undefined) {
-    res.status(400).json({ error: 'Both numbers a and b are required' });
+    res.status(400).json({ error: "Both numbers a and b are required" });
     return null;
   }
 
-  if (a === '' || b === '') {
-    res.status(400).json({ error: 'Both a and b must not be empty' });
+  if (a === "" || b === "") {
+    res.status(400).json({ error: "Both a and b must not be empty" });
     return null;
   }
 
@@ -15,7 +15,7 @@ function validateAndParseNumbers(req, res) {
   b = Number(b);
 
   if (Number.isNaN(a) || Number.isNaN(b)) {
-    res.status(400).json({ error: 'Both a and b must be valid numbers' });
+    res.status(400).json({ error: "Both a and b must be valid numbers" });
     return null;
   }
 
@@ -38,7 +38,6 @@ exports.sub = (req, res) => {
   res.send({ result: a - b });
 };
 
-
 exports.mul = (req, res) => {
   const parsed = validateAndParseNumbers(req, res);
   if (!parsed) return;
@@ -54,12 +53,11 @@ exports.div = (req, res) => {
   const { a, b } = parsed;
 
   if (b === 0) {
-    return res.status(400).json({ error: 'Division by zero' });
+    return res.status(400).json({ error: "Division by zero" });
   }
 
   res.send({ result: a / b });
 };
-
 
 exports.puissance = (req, res) => {
   const parsed = validateAndParseNumbers(req, res);
@@ -68,4 +66,3 @@ exports.puissance = (req, res) => {
   const { a, b } = parsed;
   res.send({ result: a ** b });
 };
-

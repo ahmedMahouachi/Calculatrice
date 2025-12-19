@@ -10,17 +10,16 @@ jobs:
   build_and_cypress:
     runs-on: ubuntu-latest
 
-
     steps:
-    #1. etape
+      #1. etape
       - name: Checkout repository
         uses: actions/checkout@v3
 
-    #2. etape
+      #2. etape
       - name: preapre node.js
         uses: actions/setup-node@v3
 
-    #3 etape
+      #3 etape
       - name: installer packages
         run: npm install
 
@@ -29,16 +28,6 @@ jobs:
         run: |
           node server.js &
           SERVER_PID=$!
-
           npx wait-on http://localhost:3001
-
           npm run cypress:run
-
           kill $SERVER_PID
-
-
-
-
-      
-
-      
