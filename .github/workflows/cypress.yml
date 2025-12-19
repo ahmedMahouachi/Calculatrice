@@ -2,9 +2,9 @@ name: Tests cypress
 
 on:
   push:
-    baranches: [main]
+    branches: [main]
   pull_request:
-    baranches: [main]
+    branches: [main]
 
 jobs:
   build_and_cypress:

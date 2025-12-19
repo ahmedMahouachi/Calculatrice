@@ -107,7 +107,7 @@ describe("POST - /api/cal/div", () => {
     expect(res.body.error).toBe("Division by zero");
   });
 });
-
+//sss
 
 describe("POST - /api/cal/puissance", () => {
   test("puissance valide", async () => {

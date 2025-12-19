@@ -2,9 +2,9 @@ name: Node.js supertest integration
 
 on:
   push:
-    baranches: [main]
+    branches: [main]
   pull_request:
-    baranches: [main]
+    branches: [main]
 
 jobs:
   declencher_les_tests_integration:
