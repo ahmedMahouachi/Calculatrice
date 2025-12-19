@@ -2,9 +2,9 @@ name: Dire simplement Bonjour
 
 on:
   push:
-    baranches: [main]
+    branches: [main]
   pull_request:
-    baranches: [main]
+    branches: [main]
 
 jobs:
   dire_bonjour:
