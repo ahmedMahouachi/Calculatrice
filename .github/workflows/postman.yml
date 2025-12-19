@@ -27,7 +27,6 @@ jobs:
       - name: Lancer le serveur
         run: |
           node server.js &
-          SERVER_PID=$!
           npx wait-on http://localhost:3001
       
 
@@ -35,8 +34,6 @@ jobs:
         run: |
            newman run ./postman/Calculatrice.postman_collection.json -e ./postman/calculatrice.postman_environment.json -r htmlextra --reporter-htmlextra-export newman-report/report.html 
 
-      - name: Kill server
-        run: kill $SERVER_PID
 
       - name: Upload Postman Report
         uses: actions/upload-artifact@v4
