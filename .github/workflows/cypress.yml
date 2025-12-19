@@ -30,7 +30,7 @@ jobs:
           node server.js &
           SERVER_PID=$!
 
-          npm wait-on http://localhost:3001
+          npx wait-on http://localhost:3001
 
           npm run cypress:run
 
